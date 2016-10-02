@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var port = process.env.PORT||8000;
 
 app.use(express.static('public'));
 
@@ -40,4 +41,4 @@ function cNatLangDate(d){
 	return month + " " + date + ", " + year;
 }
 
-app.listen(3000);
+app.listen(port);
