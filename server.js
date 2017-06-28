@@ -41,4 +41,4 @@ function cNatLangDate(d){
 	return month + " " + date + ", " + year;
 }
 
-app.listen(port);
+module.exports = app.listen(port);
