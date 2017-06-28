@@ -23,7 +23,7 @@ function convertDate(d){
 	if(isNaN(cDate)){
 		return {unix: null, natural: null};
 	} else{
-		var unixDate = cDate.getTime()/1000;
+		var unixDate = cDate.getTime()/1000 - cDate.getTimezoneOffset() * 60;
 		var natLangDate = cNatLangDate(cDate);
 		return {unix:unixDate,natural: natLangDate};
 	}
