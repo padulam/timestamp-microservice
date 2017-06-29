@@ -16,15 +16,15 @@ function checkForUnixDate(d){
 }
 
 function convertDate(d){
-	if(checkForUnixDate(d)){
-		d*=1000;
-	}
-	var cDate = new Date(d);
+	var isUnixDate = checkForUnixDate(d)
+	var nDate = isUnixDate ? d * 1000 : d;
+	var cDate = new Date(nDate);
+
 	if(isNaN(cDate)){
 		return {unix: null, natural: null};
 	} else{
-		var unixDate = cDate.getTime()/1000 - cDate.getTimezoneOffset() * 60;
-		var natLangDate = cNatLangDate(cDate);
+		var unixDate = isUnixDate ? d : cDate.getTime()/1000 - cDate.getTimezoneOffset() * 60;
+		var natLangDate = isUnixDate ? cNatLangDate(cDate) : d;
 		return {unix:unixDate,natural: natLangDate};
 	}
 }
