@@ -27,7 +27,7 @@ function convertDate(d){
     return {unix: null, natural: null};
   } else{
     var unixDate = isUnixDate ? d : cDate.getTime()/1000 - cDate.getTimezoneOffset() * 60;
-    var natLangDate = isUnixDate ? cNatLangDate(cDate) : d;
+    var natLangDate = cNatLangDate(cDate);
     return {unix:unixDate,natural: natLangDate};
   }
 }

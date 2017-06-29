@@ -131,4 +131,26 @@ describe('Dates API', function() {
         done();
       });
   });
+  it('should return 1448928000 in unix property when provided a valid date string of December 2015 /:date GET', function(done) {
+    chai.request(server)
+      .get('/December 2015')
+      .end(function(err, res){
+        assert.equal(res.status, 200);
+        assert.equal(res.type, 'application/json');
+        assert.property(res.body, 'unix');
+        assert.equal(res.body.unix, 1448928000);
+        done();
+      });
+  });
+  it('should return December 1, 2015 in natural property when provided valid date string of December 2015 /:date GET', function(done) {
+    chai.request(server)
+      .get('/December 2015')
+      .end(function(err, res){
+        assert.equal(res.status, 200);
+        assert.equal(res.type, 'application/json');
+        assert.property(res.body, 'natural');
+        assert.equal(res.body.natural, "December 1, 2015");
+        done();
+      });
+  });
 });
